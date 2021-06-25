@@ -1,0 +1,11 @@
+[Unit]
+Description=yalertunnel service on port 22
+After=iWave_APP.service
+[Service]
+WorkingDirectory=/usr/bin/
+ExecStartPre=/bin/sleep 60
+ExecStart=/usr/bin/yalertunnel proxy 127.0.0.2:22 try.yaler.io iwavesystems-9yqa-gbyk --secret-key OyfOldIw8alqLTRbC2+uM+HZMhM/KQ1WRffLTKwc --ca-file /etc/ssl/certs/ca-certificates.crt
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
